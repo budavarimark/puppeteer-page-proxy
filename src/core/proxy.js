@@ -89,7 +89,11 @@ const useProxyPer = {
 
 // Main function
 const useProxy = async (target, data) => {
-    useProxyPer[target.constructor.name](target, data);
+    let name = target.constructor.name
+    if(name == "Page"){
+        name = "CDPPage"
+    }
+    useProxyPer[name](target, data);
 };
 
 module.exports = useProxy;
